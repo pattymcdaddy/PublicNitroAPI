@@ -23,8 +23,6 @@ game.Players.PlayerAdded:Connect(function(plr)
 	local response -- variable for url response
 	
 	local data -- variable for url data
-
-	local elg = true -- variable for setting if the user is eligible
 	
 	
 	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using nezto's API, but you can use your own or even if you have a RoVer API key, RoVer's.

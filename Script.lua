@@ -1,4 +1,4 @@
--- NOTE: PLEASE INVITE THE DISCORD BOT FIRST: https://discord.com/api/oauth2/authorize?client_id=813755657172942918&permissions=8&scope=bot
+-- NOTE: PLEASE INVITE THE DISCORD BOT FIRST: https://discord.com/api/oauth2/authorize?client_id=813755657172942918&permissions=128&scope=bot
 
 -----------------------------------------------------------------------------
 

@@ -9,7 +9,7 @@ local guildid = "735748614428557432" -- Insert your Discord guild ID here. To fi
 
 function isbooster(plr)
 	-- Here's where you should insert your code after the player is a booster. In this case, we're having our Nitro Booster tag clone to our character. This function passes thru a player's instance.
-	
+
 	script.BillboardGui:Clone().Parent = plr.Character.Head
 end
 
@@ -17,29 +17,31 @@ end
 
 game.Players.PlayerAdded:Connect(function(plr)
 	local http = game:GetService("HttpService") -- gets the service
-	
 	local discordid -- variable for users discordid
-	
 	local response -- variable for url response
-	
 	local data -- variable for url data
+	local c = false -- makes sure that if a user boosted with more then one linked account, the same perks don't happen twice such as cloning the nametag twice.
 	
+	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using nezto's API, but you can use your own or even if you have a RoVer API key, RoVer's. 
+	-- You are expected to alter the code to fit your API of choice. However if you plan to leave it as defualt, no alterations are necessary for this to work.
 	
-	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using nezto's API, but you can use your own or even if you have a RoVer API key, RoVer's.
 	pcall(function ()
 		response = http:GetAsync("https://verify.nezto.re/api/reverse/"..plr.UserId)
-		discordid = http:JSONDecode(response)[1].discordId
-	end)
-	
-	if discordid ~= nil then
-		pcall(function ()
-			response = http:GetAsync("https://nitro.heyimpatrick.com/v1/?guild="..guildid.."&id="..discordid)
-			data = http:JSONDecode(response)
-		end)
-		if data ~= nil then
-			if data.isBooster == true then
-				isbooster(plr)
+		discordid = http:JSONDecode(response)
+		if discordid ~= nil then
+			for _,v in pairs(discordid) do
+				pcall(function ()
+					response = http:GetAsync("https://nitro.heyimpatrick.com/v1/?guild="..guildid.."&id="..v.discordId)
+					data = http:JSONDecode(response)
+					if data.isBooster == true and c == false then
+						c = true
+						isbooster(plr)
+					end
+				end)
 			end
 		end
-	end
+	end)
+
 end)
+
+-- if you need help, add me: patrick.#0723 or use a contact method on the devforums post

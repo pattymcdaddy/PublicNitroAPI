@@ -27,7 +27,7 @@ game.Players.PlayerAdded:Connect(function(plr)
 	
 	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using nezto's API, but you can use your own or even if you have a RoVer API key, RoVer's.
 	pcall(function ()
-		response = http:GetAsync("https://verify.nezto.re/api/reverse/127647132")
+		response = http:GetAsync("https://verify.nezto.re/api/reverse/"..plr.UserId)
 		discordid = http:JSONDecode(response)[1].discordId
 	end)
 	

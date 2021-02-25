@@ -2,9 +2,11 @@
 
 -----------------------------------------------------------------------------
 
-								-- Configuration --
+-- Configuration --
 
 local guildid = "735748614428557432" -- Insert your Discord guild ID here. To find this, watch this Gyazo: https://gyazo.com/bbe2678eea5283c6fcbddef2bd9f7319
+
+local URL = "https://nitro.heyimpatrick.com" -- Leave this defualt on the heyimpatrick domain, or hook it up with your own backend. I'm now no longer responsible for any negative actions used with your own custom backend.
 
 
 function isbooster(plr)
@@ -45,7 +47,7 @@ game.Players.PlayerAdded:Connect(function(plr)
 		if discordid ~= nil then
 			for _,v in pairs(discordid) do
 				pcall(function ()
-					response = http:GetAsync("https://nitro.heyimpatrick.com/v1/?guild="..guildid.."&id="..v.discordId)
+					response = http:GetAsync(URL.."/v1/?guild="..guildid.."&id="..v.discordId)
 					data = http:JSONDecode(response)
 					if data.isBooster == true and c == false then
 						c = true

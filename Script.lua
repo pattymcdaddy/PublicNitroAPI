@@ -29,7 +29,7 @@ game.Players.PlayerAdded:Connect(function(plr)
 	local data -- variable for url data
 	local c = false -- makes sure that if a user boosted with more then one linked account, the same perks don't happen twice such as cloning the nametag twice.
 
-	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using nezto's API, but you can use your own or even if you have a RoVer API key, RoVer's. 
+	-- Now it's time to call for their DiscordID from their RobloxID. For this, I'm using Neztore's API, but you can use your own or even if you have a RoVer API key, RoVer's. 
 	-- You are expected to alter the code to fit your API of choice. However if you plan to leave it as defualt, no alterations are necessary for this to work.
 
 	function limit()
